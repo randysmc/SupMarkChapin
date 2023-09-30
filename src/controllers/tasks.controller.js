@@ -1,8 +1,9 @@
 import { pool } from "../db.js";
 
 export const getAllTasks = async (req, res, next) => {
-  const allTasks = await pool.query("SELECT * FROM tasks");
-  res.json(allTasks.rows);
+  console.log(req.userId);
+  const result = await pool.query("SELECT * FROM tasks");
+  res.json(result.rows);
 };
 
 export const getTask = async (req, res) => {
