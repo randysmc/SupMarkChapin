@@ -1,0 +1,19 @@
+CREATE TABLE tasks(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) UNIQUE NOT NULL,
+    description TEXT
+)
+
+CREATE TABLE Usuario(
+	Id SERIAL NOT NULL,
+	Nombre VARCHAR(50) NOT NULL,
+	Email VARCHAR(75) UNIQUE NOT NULL,
+	Password VARCHAR(200) NOT NULL,
+	Rol_Empleado INT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (Rol_Empleado) REFERENCES reg_empleado.rol_Empleado(Id_Rol)
+);
+
+ALTER TABLE  tasks ADD COLUMN user_id INTEGER REFERENCES Usuario(Id)
+
+ALTER TABLE user ADD COLUMN gravatar VARCHAR(255);
