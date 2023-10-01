@@ -1,9 +1,7 @@
 import bcrypt from "bcrypt";
 import { pool } from "../db.js";
 import { createAccessToken } from "../libs/jwt.js";
-import md5 from "md5"
-
-
+import md5 from "md5";
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
@@ -38,7 +36,6 @@ export const signin = async (req, res) => {
   return res.json(result.rows[0]);
 };
 
-
 export const signup = async (req, res, next) => {
   const { nombre, email, password, rol_empleado } = req.body;
 
@@ -47,19 +44,19 @@ export const signup = async (req, res, next) => {
     const gravatar = `https://www.gravatar.com/avatar/${md5(email)}`;
 
     const result = await pool.query(
-      "INSERT INTO Usuario(nombre, email, password, rol_empleado, gravatar) VALUES($1,$2,$3,$4,$5) Returning *",
-      [nombre, email, hashedPassword, rol_empleado,gravatar]
+      "INSERT INTO Usuario (nombre, email, password, rol_empleado, gravatar) VALUES($1,$2,$3,$4,$5) Returning *",
+      [nombre, email, hashedPassword, rol_empleado, gravatar]
     );
-    const token = await createAccessToken({ id: result.rows[0].id,  });
 
-    res.cookie('token', token,{
-        httpOnly: true,
-        //secure: true,
-        sameSite: 'none',
-        maxAge: 24 *60 *60 *1000 // 1 day
-    })
-
-    return res.json(result.rows[0])
+    //podemos mandar mas datos despues del id
+    const token = await createAccessToken({ id: result.rows[0].id });
+    res.cookie("token", token, {
+      //httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+    return res.json(result.rows[0]);
   } catch (error) {
     if (error.code === "23505") {
       return res.status(400).json({
@@ -72,11 +69,13 @@ export const signup = async (req, res, next) => {
 };
 
 export const signout = (req, res) => {
-    res.clearCookie('token');
-    res.sendStatus(200);
-  }
+  res.clearCookie("token");
+  res.sendStatus(200);
+};
 
-  export const profile = async (req, res) => {
-    const result = await pool.query('SELECT * FROM Usuario WHERE id = $1', [req.userId]);
-    return res.json(result.rows[0]);
-  } 
+export const profile = async (req, res) => {
+  const result = await pool.query("SELECT * FROM Usuario WHERE id = $1", [
+    req.userId,
+  ]);
+  return res.json(result.rows[0]);
+};

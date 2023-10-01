@@ -1,10 +1,9 @@
-
 import { pool } from "../db.js";
 
 
-
 export const getAllTasks = async (req, res, next) => {
-  const result = await pool.query("SELECT * FROM tasks WHERE user_id=$1", [
+  console.log(req.userId);
+  const result = await pool.query("SELECT * FROM tasks WHERE user_id = $1", [
     req.userId,
   ]);
   res.json(result.rows);
@@ -32,22 +31,13 @@ export const createTask = async (req, res, next) => {
     );
     res.json(result.rows[0]);
   } catch (error) {
-    console.log(error);
-    return res.send(error);
+    if (error.code === "23505") {
+      return res.status(409).json({
+        message: "ya existe una tarea con ese titulo",
+      });
+    }
+    next(error);
   }
-};
-
-export const deleteTask = async (req, res) => {
-  const result = await pool.query("DELETE FROM tasks WHERE ID = $1", [
-    req.params.id,
-  ]);
-
-  if (result.rowCount === 0) {
-    return res.status(404).json({
-      message: "No existe una tarea con ese id",
-    });
-  }
-  return res.sendStatus(204);
 };
 
 export const updateTask = async (req, res) => {
@@ -65,4 +55,17 @@ export const updateTask = async (req, res) => {
   }
 
   return res.json(result.rows[0]);
+};
+
+export const deleteTask = async (req, res) => {
+  const result = await pool.query("DELETE FROM tasks WHERE ID = $1", [
+    req.params.id,
+  ]);
+
+  if (result.rowCount === 0) {
+    return res.status(404).json({
+      message: "No existe una tarea con ese id",
+    });
+  }
+  return res.sendStatus(204);
 };

@@ -1,8 +1,8 @@
 //Context para guardar los datos de los usuarios
 
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext,/* useEffect*/ } from "react";
 //import Cookie from "js-cookie";
-//import axios from "../api/axios";
+import axios from "../api/axios";
 
 export const AuthContext = createContext();
 
@@ -92,7 +92,7 @@ export function AuthProvider({ children }) {
         isAuth,
         errors,
         signup,
-        signin,
+        //signin,
         //signout,
         //loading,
       }}
