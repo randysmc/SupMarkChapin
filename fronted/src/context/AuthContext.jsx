@@ -1,7 +1,7 @@
 //Context para guardar los datos de los usuarios
 
-import { createContext, useState, useContext,/* useEffect*/ } from "react";
-//import Cookie from "js-cookie";
+import { createContext, useState, useContext, useEffect } from "react";
+import Cookie from "js-cookie";
 import axios from "../api/axios";
 
 export const AuthContext = createContext();
@@ -56,7 +56,7 @@ export function AuthProvider({ children }) {
   const signout = async () => {
     await axios.post("/signout");
     setUser(null);
-    setIsAuth(false);
+    setIsAuth(false);*/
   };
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export function AuthProvider({ children }) {
     }, 5000);
 
     return () => clearTimeout(clean);
-  }, [errors])*/
+  }, [errors])
 
   return (
     <AuthContext.Provider
@@ -92,7 +92,7 @@ export function AuthProvider({ children }) {
         isAuth,
         errors,
         signup,
-        //signin,
+        signin,
         //signout,
         //loading,
       }}
