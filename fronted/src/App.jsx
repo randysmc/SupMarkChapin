@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-
 import EmployesFormPage from "./pages/EmployesFormPage";
 import EmployesPage from "./pages/EmployesPage";
 import LoginPage from "./pages/LoginPage";
@@ -9,6 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import TasksPage from "./pages/TasksPage";
 import TaskFormPage from "./pages/TaskFormPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
       <Route path="/tasks" element={<TasksPage />} />
       <Route path="/task/new" element={<TaskFormPage />} />
       <Route path="/task/1/edit" element={<TaskFormPage />} />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 }
