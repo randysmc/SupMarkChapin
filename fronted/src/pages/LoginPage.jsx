@@ -39,10 +39,10 @@ function LoginPage() {
           />
           {errors.email && <p className="text-red-500">Email is required</p>}
 
-          <Label htmlFor="password">Contraseña</Label>
+          <Label htmlFor="password">Password</Label>
           <Input
             type="password"
-            placeholder="Contraseña"
+            placeholder="Password"
             {...register("password", {
               required: true,
             })}
@@ -54,9 +54,9 @@ function LoginPage() {
           <Button>Sign in</Button>
 
           <div className="flex justify-between my-4">
-            <p className="mr-4">¿Crear un  nuevo Rol?</p>
+            <p className="mr-4">Don't have an account?</p>
             <Link to="/register" className="font-bold">
-              Crear
+              Register
             </Link>
           </div>
         </form>

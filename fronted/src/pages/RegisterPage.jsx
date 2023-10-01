@@ -5,19 +5,17 @@ import { useAuth } from "../context/AuthContext";
 
 function RegisterPage() {
   const {
-    register, // registrar los input 
-    handleSubmit, //maneja lo que se envia
-    formState: { errors }, //errores
+    register,
+    handleSubmit,
+    formState: { errors },
   } = useForm();
-
   const { signup, errors: signupErrors } = useAuth();
-
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
     const user = await signup(data);
 
-    if (user) navigate("/profile");
+    if (user) navigate("/tasks");
   });
 
   return (
@@ -31,42 +29,42 @@ function RegisterPage() {
         <h3 className="text-2xl font-bold">Register</h3>
 
         <form onSubmit={onSubmit}>
-          <Label htmlFor="name">Nombre</Label>
+          <Label htmlFor="name">Name</Label>
           <Input
-            placeholder="Ingresa tu nombre"
+            placeholder="Enter your fullname"
             {...register("name", {
-              required: true, // datos requeridos
+              required: true,
             })}
           />
 
-          {errors.name && <p className="text-red-800">Nombre requeridod</p>}
+          {errors.name && <p className="text-red-500">name is required</p>}
 
           <Label htmlFor="email">Email</Label>
           <Input
             type="email"
-            placeholder="Ingresa email"
+            placeholder="Enter your email"
             {...register("email", {
               required: true,
             })}
           />
-          {errors.email && <p className="text-red-800">Email es requerido</p>}
+          {errors.email && <p className="text-red-500">email is required</p>}
 
-          <Label htmlFor="password">Contraseña</Label>
+          <Label htmlFor="password">Password</Label>
           <Input
             type="password"
-            placeholder="Ingresa tu contraseña"
+            placeholder="Enter your password"
             {...register("password", {
               required: true,
             })}
           />
           {errors.password && (
-            <p className="text-red-500">Contraseña requeridad</p>
+            <p className="text-red-500">password is required</p>
           )}
 
           <Button>Register</Button>
 
           <div className="flex justify-between my-4">
-            <p className="mr-4">¿Ya tienes un usuario?</p>
+            <p className="mr-4">Already have an account?</p>
             <Link to="/login" className="font-bold">
               Login
             </Link>

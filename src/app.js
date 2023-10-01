@@ -7,6 +7,7 @@ import cors from "cors";
 import tasksRoutes from "./routes/tasks.routes.js";
 import employedRoutes from "./routes/employed.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import{pool} from "./db.js"
 
 
 
@@ -24,6 +25,7 @@ app.use(morgan("dev"));
 app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 
 //Routes
 app.get("/", (req, res) => res.json({ message: "welcome to my API*" }));

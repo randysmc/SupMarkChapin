@@ -1,5 +1,3 @@
-//Context para guardar los datos de los usuarios
-
 import { createContext, useState, useContext, useEffect } from "react";
 import Cookie from "js-cookie";
 import axios from "../api/axios";
@@ -15,10 +13,10 @@ export const useAuth = () => {
 };
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); //usuario
-  const [isAuth, setIsAuth] = useState(false); // si esta autenticado, inicia en false
-  const [errors, setErrors] = useState(null); //errores de backend, !error cuando carga
-  //const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [isAuth, setIsAuth] = useState(false);
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const signin = async (data) => {
     try {
@@ -52,11 +50,11 @@ export function AuthProvider({ children }) {
       setErrors([error.response.data.message]);
     }
   };
-/*
+
   const signout = async () => {
     await axios.post("/signout");
     setUser(null);
-    setIsAuth(false);*/
+    setIsAuth(false);
   };
 
   useEffect(() => {
@@ -93,8 +91,8 @@ export function AuthProvider({ children }) {
         errors,
         signup,
         signin,
-        //signout,
-        //loading,
+        signout,
+        loading,
       }}
     >
       {children}
