@@ -92,6 +92,8 @@ CREATE TABLE reg_cliente.Tarjeta_Cliente(
 	FOREIGN KEY (Tarjeta) REFERENCES reg_empresa.Tarjeta(Id_Tarjeta)
 );
 
+
+
 CREATE TABLE reg_venta.Venta(
 	Id_Venta SERIAL NOT NULL,
 	Empleado VARCHAR(20) NOT NULL,

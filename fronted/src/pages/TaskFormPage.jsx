@@ -47,7 +47,7 @@ function TaskFormPage() {
           </p>
         ))}
         <h2 className="text-3xl font-bold my-4">
-          {params.id ? "Edit Task" : "Create Task"}
+          {params.id ? "Edit Empleado" : "Crear Empleado"}
         </h2>
         <form onSubmit={onSubmit}>
           <Label htmlFor="title">Title</Label>
@@ -60,7 +60,7 @@ function TaskFormPage() {
             })}
           />
           {errors.title && (
-            <span className="text-red-500">Title is required</span>
+            <span className="text-red-500">Title</span>
           )}
 
           <Label htmlFor="description">Description</Label>
@@ -70,7 +70,7 @@ function TaskFormPage() {
             {...register("description")}
           ></Textarea>
 
-          <Button>{params.id ? "Edit Task" : "Create Task"}</Button>
+          <Button>{params.id ? "Editar Empleado" : "Crear Empleado"}</Button>
         </form>
       </Card>
     </div>

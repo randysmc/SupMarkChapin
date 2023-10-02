@@ -6,6 +6,13 @@ INSERT INTO reg_empleado.Rol_Empleado VALUES(2, 'Cajero'), (3, 'Bodega'), (4, 'I
 SELECT * FROM reg_empleado.Rol_Empleado;
 
 INSERT INTO reg_cliente.Cliente VALUES('CF', 'Pedro', 'Dos Santos', 'Quetzaltenango', 478454);
+INSERT INTO reg_cliente.Cliente VALUES('4560', 'Roni', 'Olivera', 'Guatemala', 556454);
+INSERT INTO reg_cliente.Cliente VALUES('5856', 'Juan', 'Diego', 'Francia', 508494);
+INSERT INTO reg_cliente.Cliente VALUES('1058', 'Diego', 'Perez', 'Solola', 50185);
+INSERT INTO reg_cliente.Cliente VALUES('5587', 'Galilea', 'Velasquez', 'Quetzaltenango', 459842);
+INSERT INTO reg_cliente.Cliente VALUES('6965', 'Julia', 'Pineda', 'San Pedro', 587520);
+INSERT INTO reg_cliente.Cliente VALUES('5959', 'Oscar', 'Aveiro', 'Quetzaltenango', 685478);
+
 
 SELECT * FROM reg_cliente.Cliente;
 

@@ -10,20 +10,20 @@ export const publicRoutes = [
     name: "Login",
     path: "/login",
   },
-  {
+  /*{
     name: "Register",
     path: "/register",
-  },
+  },*/
 ]
 
 export const privateRoutes = [
   {
-    name: "Tasks",
+    name: "Empleados",
     path: "/tasks",
     icon: <BiTask className='w-5 h-5' />,
   },
   {
-    name: "Add",
+    name: "Agregar Empleado",
     path: "/tasks/new",
     icon: <MdTaskAlt className='w-5 h-5' />,
   },
