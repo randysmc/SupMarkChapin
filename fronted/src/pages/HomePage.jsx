@@ -9,7 +9,7 @@ function HomePage() {
 
     <Card>
       <h1 className="text-3xl font-bold my-4">Home Page</h1>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium hic necessitatibus laborum aperiam repellendus, id facilis vero ea dignissimos, qui omnis provident doloremque. Eius cumque commodi doloribus! Illum libero neque mollitia rem, blanditiis odio minima quos fugiat nesciunt possimus reprehenderit?</p>
+      <p >SuperMercado que cubres sus necesidades más basicas, pero que no cuenta con un buen sistema xd</p>
     </Card>
 
   </div>;

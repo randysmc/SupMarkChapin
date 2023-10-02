@@ -7,6 +7,7 @@ import cors from "cors";
 import tasksRoutes from "./routes/tasks.routes.js";
 import employedRoutes from "./routes/employed.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import salesRoutes from "./routes/sales.routes.js"
 import{pool} from "./db.js"
 
 
@@ -33,6 +34,7 @@ app.get("/", (req, res) => res.json({ message: "welcome to my API*" }));
 app.use("/api", tasksRoutes);
 app.use("/api", employedRoutes);
 app.use("/api", authRoutes);
+app.use("/api", salesRoutes);
 
 //Error
 app.use((err, req, res, next) => {

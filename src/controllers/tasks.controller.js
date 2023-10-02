@@ -5,9 +5,11 @@ export const getAllTasks = async (req, res, next) => {
   console.log(req.headers)
   //console.log(req.cookies.token);
   console.log(req.userId);
-  const result = await pool.query("SELECT * FROM tasks WHERE user_id = $1", [
+  const result = await pool.query("SELECT * FROM tasks  ")
+  /** const result = await pool.query("SELECT * FROM tasks WHERE user_id = $1", [
     req.userId,
-  ]);
+  ]) */
+ ;
   res.json(result.rows);
 };
 

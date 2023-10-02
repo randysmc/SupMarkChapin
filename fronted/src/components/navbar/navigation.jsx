@@ -2,10 +2,10 @@ import {MdTaskAlt} from 'react-icons/md'
 import {BiTask, BiUserCircle} from 'react-icons/bi'
 
 export const publicRoutes = [
-  {
+ /* {
     name: "About",
     path: "/about",
-  },
+  },*/
   {
     name: "Login",
     path: "/login",

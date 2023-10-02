@@ -1,23 +1,23 @@
 import { Card, Button } from "../ui";
-import { useTasks } from "../../context/TaskContext";
+import { useEmployes } from "../../context/EmployedContext";
 import { useNavigate } from "react-router-dom";
 import { PiTrashSimpleLight } from "react-icons/pi";
 import { BiPencil } from "react-icons/bi";
 
-function TaskCard({ task }) {
-  const { deleteTask } = useTasks();
+function EmployedCard({ employed }) {
+  const { deleteEmployed } = useEmployes();
   const navigate = useNavigate();
 
   return (
-    <Card key={task.id} className="px-7 py-4 flex flex-col justify-center">
+    <Card key={employed.id} className="px-7 py-4 flex flex-col justify-center">
       <div>
-        <h1 className="text-2xl font-bold">{task.title}</h1>
-        <p>{task.description}</p>
-        
+        <h1 className="text-2xl font-bold">{employed.id}</h1>
+        <p>{employed.description}</p>
+        <p>{employed.description}</p>
       </div>
       
       <div className="my-2 flex justify-end gap-x-2">
-        <Button onClick={() => navigate(`/tasks/${task.id}/edit`)}>
+        <Button onClick={() => navigate(`/employes/${employed.id}/edit`)}>
           <BiPencil className="text-white" />
           Editar
         </Button>
@@ -25,7 +25,7 @@ function TaskCard({ task }) {
           className="bg-red-700 hover:bg-red-600"
           onClick={async () => {
             if (window.confirm("¿Estás seguro de eliminar esta tarea?")) {
-              deleteTask(task.id);
+              deleteEmployed(employed.id);
             }
           }}
         >
@@ -37,4 +37,4 @@ function TaskCard({ task }) {
   );
 }
 
-export default TaskCard;
+export default EmployedCard;

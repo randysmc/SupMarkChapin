@@ -26,23 +26,23 @@ function LoginPage() {
             <p className="bg-red-500 text-white p-2 text-center">{err}</p>
           ))}
 
-        <h1 className="text-4xl font-bold my-2 text-center">Sign in</h1>
+        <h1 className="text-4xl font-bold my-2 text-center">Iniciar Sesion</h1>
 
         <form onSubmit={onSubmit}>
           <Label htmlFor="email">Email</Label>
           <Input
             type="email"
-            placeholder="Email"
+            placeholder="correo"
             {...register("email", {
               required: true,
             })}
           />
           {errors.email && <p className="text-red-500">Email is required</p>}
 
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Contraseña</Label>
           <Input
             type="password"
-            placeholder="Password"
+            placeholder="contraseña"
             {...register("password", {
               required: true,
             })}
@@ -51,14 +51,9 @@ function LoginPage() {
             <p className="text-red-500">Password is required</p>
           )}
 
-          <Button>Sign in</Button>
+          <Button>Entrar</Button>
 
-          <div className="flex justify-between my-4">
-            <p className="mr-4">Don't have an account?</p>
-            <Link to="/register" className="font-bold">
-              Register
-            </Link>
-          </div>
+
         </form>
       </Card>
     </Container>

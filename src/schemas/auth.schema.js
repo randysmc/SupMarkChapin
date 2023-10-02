@@ -17,10 +17,7 @@ export const signupSchema = z.object({
     }).min(6, {
         message: 'La contraseña debe tener al menos 6 caracteres'
     }).max(255),
-    rol_empleado: z.number({
-        required_error: 'El rol de usuario es requerido',
-        invalid_type_error: 'El rol debe ser un digito '
-    }).positive()
+
 })
 
 export const signinSchema = z.object({

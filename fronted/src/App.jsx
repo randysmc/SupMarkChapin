@@ -9,8 +9,8 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-import EmployesFormPage from "./pages/EmployesFormPage";
-import EmployesPage from "./pages/EmployesPage";
+//import EmployesFormPage from "./pages/EmployesFormPage";
+//import EmployesPage from "./pages/EmployesPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
@@ -21,9 +21,7 @@ import NotFound from "./pages/NotFound";
 function App() {
   const { isAuth, loading } = useAuth();
 
-  if(loading) return<h1>
-    Cargando
-  </h1>
+  if (loading) return <h1>Cargando</h1>;
   return (
     <>
       <Navbar />
@@ -40,7 +38,8 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
           </Route>
 
-          <Route element={<ProtectedRoute isAllowed={isAuth} redirectTo ="/login" />}>
+          <Route element={<ProtectedRoute isAllowed={isAuth} redirectTo="/login" />}
+          >
             <Route
               element={
                 <TaskProvider>
@@ -49,18 +48,11 @@ function App() {
               }
             >
               <Route path="/tasks" element={<TasksPage />} />
-              <Route path="/task/new" element={<TaskFormPage />} />
+              <Route path="/tasks/new" element={<TaskFormPage />} />
               <Route path="/task/:id/edit" element={<TaskFormPage />} />
             </Route>
 
-
-
             
-            <Route    >
-            <Route path="/employes/new" element={<EmployesFormPage />} />
-            <Route path="/employes/1/edit" element={<EmployesFormPage />} />
-            <Route path="/employes" element={<EmployesPage />} />
-            </Route>
             <Route path="/profile" element={<ProfilePage />} />
           </Route>
 

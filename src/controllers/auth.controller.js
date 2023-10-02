@@ -6,7 +6,7 @@ import md5 from "md5";
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
-  const result = await pool.query("SELECT * FROM Usuario WHERE email = $1", [
+  const result = await pool.query("SELECT * FROM usuario WHERE email = $1", [
     email,
   ]);
 
@@ -28,7 +28,7 @@ export const signin = async (req, res) => {
 
   res.cookie("token", token, {
     // httpOnly: true,
-    //secure: true,
+    secure: true,
     sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000, // 1 day
   });
@@ -37,15 +37,15 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res, next) => {
-  const { nombre, email, password, rol_empleado } = req.body;
+  const { nombre, email, password } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const gravatar = `https://www.gravatar.com/avatar/${md5(email)}`;
 
     const result = await pool.query(
-      "INSERT INTO Usuario (nombre, email, password, rol_empleado, gravatar) VALUES($1,$2,$3,$4,$5) Returning *",
-      [nombre, email, hashedPassword, rol_empleado, gravatar]
+      "INSERT INTO Usuario (nombre, email, password, gravatar) VALUES($1,$2,$3,$4) Returning *",
+      [nombre, email, hashedPassword,  gravatar]
     );
 
 
@@ -53,7 +53,7 @@ export const signup = async (req, res, next) => {
     const token = await createAccessToken({ id: result.rows[0].id });
     res.cookie("token", token, {
       //httpOnly: true,
-      //secure: true,
+      secure: true,
       sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });

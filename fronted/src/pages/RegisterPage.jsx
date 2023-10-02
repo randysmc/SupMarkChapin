@@ -29,7 +29,7 @@ function RegisterPage() {
         <h3 className="text-2xl font-bold">Register</h3>
 
         <form onSubmit={onSubmit}>
-          <Label htmlFor="name">Name</Label>
+          <Label htmlFor="name">Nombre</Label>
           <Input
             placeholder="Enter your fullname"
             {...register("name", {
@@ -49,7 +49,7 @@ function RegisterPage() {
           />
           {errors.email && <p className="text-red-500">email is required</p>}
 
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Contraseña</Label>
           <Input
             type="password"
             placeholder="Enter your password"
@@ -61,14 +61,10 @@ function RegisterPage() {
             <p className="text-red-500">password is required</p>
           )}
 
-          <Button>Register</Button>
 
-          <div className="flex justify-between my-4">
-            <p className="mr-4">Already have an account?</p>
-            <Link to="/login" className="font-bold">
-              Login
-            </Link>
-          </div>
+          <Button>Registrar</Button>
+
+
         </form>
       </Card>
     </Container>
